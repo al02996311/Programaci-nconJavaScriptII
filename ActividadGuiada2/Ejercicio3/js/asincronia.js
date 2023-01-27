@@ -2,15 +2,11 @@
 
 function cuadradoPromesa (value) {
     if (typeof value !== "number") {
-        return new Promise (
-            (reject) => {
-                reject(new Error (`Error, El valor ingresado ${value} no es un número`));       
-            }
-        );
+        return Promise.reject(new Error (`Error, El valor ingresado ${value} no es un número`));       
     }
 
     return new Promise (
-        (resolve,reject) => {
+        (resolve) => {
             setTimeout(()=> {
                 resolve({"value" : value, "result" : value*value});
             }, 0 | (Math.random() * 1000));
