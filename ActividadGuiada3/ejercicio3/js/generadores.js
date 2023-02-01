@@ -1,8 +1,13 @@
-function cuadrado (valor) {
-    console.log(setTimeout(() => {
-        return {valor : resultado};
-    }) , 0 || Math.random() * 1000);
+function cuadrado(valor) {
+    let obj = new Object ();
+    obj[valor]=valor*valor;
+    setTimeout(function(){
+        console.log(valor,Object.values(obj));
+        }, Math.random() * 1000);
+      
+    return (valor, Object.values(obj));
 }
+
 
 function* generador () {
     console.log("Inicia Generador");
@@ -18,6 +23,6 @@ function* generador () {
 let gen  = generador();
 
 for (const iterator of gen) {
-    console.log(iterator);
+    console.log(cuadrado(iterator));
 }
 
