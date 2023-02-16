@@ -1,0 +1,35 @@
+
+function responderDespuesde2sec() {
+  return newPromise(resolver => {
+    setTimeout(() => {
+      resolver('respuesta');
+    }, 2000);
+  });
+}
+
+async function asyncCall() {
+  console.log('llamando');
+  const resultado = await responderDespuesde2sec();
+  console.log(resultado);
+}
+
+asyncCall();
+
+
+function responderDespuesde2sec() {
+  return newPromise(resolver => {
+    setTimeout(() => {
+      resolver('respuesta');
+    }, 2000);
+  });
+}
+
+async function asyncCall() {
+  console.log('llamando');
+  const resultado = await responderDespuesde2sec();
+  console.log(resultado);
+}
+
+asyncCall();
+
+no

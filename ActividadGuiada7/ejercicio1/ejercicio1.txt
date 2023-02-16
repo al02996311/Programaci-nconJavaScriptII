@@ -1,0 +1,191 @@
+1. ¿Qué es un transpilador y porqué sería útil en un desarrollo web de JavaScript?
+
+Un transpilador es un software con las caracteriticas de un traductor y un compilador
+el cual se dedica a interpretar el codigo de manera correcta en diferentes versiones de
+navegadores.
+Es util en un desarrollo web ya que esto ayuda a tener en cuenta que algunas funciones
+mas recientes de Javascript no son compalibles pero pueden ser manjeadas de tal manera
+que ningun navegador se quede sin soporte para poder usar los nuevos desarrollos web.
+
+2. ¿Cómo le explicarías a un compañero programador la utilidad de la herramienta Babel?
+
+Es una herramienta que ayuda a convertir codigo novedoso de javascript en codigo utilizable
+para navegadores con versiones anteriores a la mas reciente y con capacidades limitadas.
+
+3. Investiga las ventajas de usar Babel como un transpilador en relación con otras herramientas que 
+buscan alcanzar el mismo objetivo.
+
+Babel tiene varias ventajas ya que se hay implementaciones en web que ayudan a convertir el codigo de
+java script y a su vez tiene modulos instalables en diferentes herramientas de programacion para su 
+uso mas automatizado.
+
+4. ¿Cómo justificas el uso de código Polyfill en un proyecto de desarrollo web?
+
+El codigo polyfill es una herramienta que ayuda a los desarrollo web en caso de que alguna nueva funcion
+no exista en versiones anteriores de los navegadores, por lo que en caso de que no se encuentren las nuevas
+funciones el codigo polyfill atrapa la instancia de codigo no reconocido y ejecuta un codigo que es entenedible
+para navegadores viejos.
+
+5. En la siguiente tabla encontrarás extractos de códigos (columna izquierda). Agrega comentarios que 
+expliquen su funcionamiento.
+
+const array = [1, 2, 3];
+declara un arreglo con tres elementos
+
+///////////////////////
+const getRandomNumber = () => {
+  return
+  Math.ceil(Math.random() * 6);
+}
+
+es una funcion flecha asignada a auna constante en donde se regresa un numero 
+aleatorio entre 0 y 6 redondeado hacia arriba
+
+///////////////////////
+function add (a = 5 , b = 10) {
+  return a + b;
+}
+
+console.log(add());
+
+es una funcion en donde si no hay vaores de a y b se asignan automaticamente 5 a a y 10 a b en donde 
+se regregsa la suma de dos dos numeros y al final se imprime la invocacion de la funcion add
+
+///////////////////////
+var add = (a, b) => {
+  return a + b;
+}
+
+es una funcion flecha asignada a la variable add en donde se regresa la suma de a y b.
+
+///////////////////////
+function* Hola() {
+  yield 'Hola Gabriela';
+  yield 'Hola Rocio';
+  yield 'Hola Andrea';
+}
+
+var helloInstance = Hola();
+console.log(helloInstance.next());
+console.log(helloInstance.next());
+console.log(helloInstance.next());
+console.log(helloInstance.next())
+
+
+se declara una funcion generadora en donde cada vez que se llama la funcion generadora Hola se regresa el
+valor de Hola con algun nombre. Después se declara una variable que se llama 
+helloInstance con la funcion generadora al final se imprimen en consola los valores de la funcion generadora
+de uno en uno hasta que ya no haya valores en la funcion generadora.
+///////////////////////
+
+
+6. Copia el código de cada renglón y conviértelo en instrucciones compatibles con otras versiones anteriores de Java Script usando Babel.
+
+///////////////////////
+original:
+
+const array = [1, 2, 3];
+
+transformado:
+
+const array = [1, 2, 3];
+
+///////////////////////
+
+original:
+
+const getRandomNumber = () => {
+  return
+  Math.ceil(Math.random() * 6);
+}
+
+
+transformado:
+
+const getRandomNumber = () => {
+  return;
+  Math.ceil(Math.random() * 6);
+}
+
+///////////////////////
+original:
+
+function add (a = 5 , b = 10) {
+  return a + b;
+}
+
+console.log(add());
+
+transformado:
+
+function add (a,b) {
+    if(a === void 0) {
+        a = 5;
+    }
+    if (b === void 0) {
+        b = 10;
+    }
+
+    return a + b;
+}
+
+console.log(add());
+
+///////////////////////
+
+original:
+
+var add = (a, b) => {
+  return a + b;
+}
+
+tranformado:
+
+var add = (a, b) => {
+  return a + b;
+};
+
+///////////////////////
+original:
+
+function* Hola() {
+  yield 'Hola Gabriela';
+  yield 'Hola Rocio';
+  yield 'Hola Andrea';
+}
+
+var helloInstance = Hola();
+console.log(helloInstance.next());
+console.log(helloInstance.next());
+console.log(helloInstance.next());
+console.log(helloInstance.next())
+
+transformado:
+
+function* Hola() {
+  yield 'Hola Gabriela';
+  yield 'Hola Rocio';
+  yield 'Hola Andrea';
+}
+
+var helloInstance = Hola();
+console.log(helloInstance.next());
+console.log(helloInstance.next());
+console.log(helloInstance.next());
+console.log(helloInstance.next());
+
+///////////////////////
+
+7. Investiga 3 funciones de la versión ECMAScript 2022 que sean nuevas en relación a versiones anteriores.
+
+The method .at() is supported by indexable values like Array, String, or TypedArray. It takes a positive or negative integer value and returns the element at the given index. 
+
+Object.hasOwn() returns true if the specified object has the indicated property as its own property. If the property is inherited or does not exist, the method returns false.
+
+With the Error .cause, you can add more essential information to the errors you receive. You should specify the error options as a second parameter, and with the “cause“ key you can pass the error that you want to chain.
+
+8. Identifica si los métodos usados pueden ejecutados por navegadores haciendo uso de la documentación que se encuentra en https://caniuse.com/
+
+.at() solo firefox lo soporta
+hasOwn() no esta soportado por ningun navegador
+Error .cause soportado por chrome,edge,sfacri, firefox excepto opera y IE
