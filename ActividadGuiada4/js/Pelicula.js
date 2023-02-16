@@ -181,6 +181,7 @@ class Pelicula {
                 if(!Pelicula.listaGeneros.includes(genero)) {
                     console.error(`Los generos no son aceptados, generos originales ${generos.join(",")}`);
                     Pelicula.generosAceptados();
+                    return false;
 
                 }
             }
@@ -194,8 +195,10 @@ class Pelicula {
         if(this.validarNumero("calificacion",calificacion)) {
             if(calificacion < 0 || calificacion > 10) {
                 console.error(`La calificacion no es valida ${calificacion}, este debe de ser un numero estre 0 y 10`);
+                return false;
             } else {
                 calificacion = calificacion.toFixed(1);
+                return true;
             }
         } else {
             return false;

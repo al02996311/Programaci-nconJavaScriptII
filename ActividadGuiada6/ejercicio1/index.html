@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Document</title>
+</head>
+<body>
+ <div id="app">
+    <table id = "table" border = 1>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>email</th>
+                <th>comment</th>
+            </tr>
+        </thead>
+        <tbody id = "data">
+
+        </tbody>
+    </table>
+ </div>
+ <script>
+ const xhr = new XMLHttpRequest();
+ function onRequestHandler(){
+ if (this.readyState==4 && this.status==200) {
+ //console.log(this.response); 
+ const data = JSON.parse(this.response);
+ console.log(data); 
+ let resultado = "";
+ for (const iterator of data) {
+    resultado += `
+        <tr>
+            <td>${iterator['id']}</td>
+            <td>${iterator['name']}</td>
+            <td>${iterator['email']}</td>
+            <td>${iterator['body']}</td>
+        </tr>
+    `;  
+ }
+ 
+ document.getElementById('data').innerHTML = resultado;
+ 
+ }
+ }
+ xhr.addEventListener("load", onRequestHandler);
+ xhr.open("GET","https://jsonplaceholder.typicode.com/comments");
+ xhr.send();
+ </script>
+</body

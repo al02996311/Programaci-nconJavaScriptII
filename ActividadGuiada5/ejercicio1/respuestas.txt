@@ -1,0 +1,42 @@
+1.
+
+consulta de recetas de cocina
+consulta de emails
+
+2. 
+
+es mas sencillo de implementar 
+las opciones de fecth son mas directas y claras
+
+3.
+
+el catch es importante para detectar errores
+
+4.
+
+function CargaDocumento() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("demo").innerHTML =
+            this.responseText;
+        }
+    };
+    xhttp.open("GET", "ajax_info.txt", true);
+    xhttp.send();
+}
+
+ 5.
+
+
+function CargaDocumento() {
+    let file = "fecth_info.txt";
+    fetch(file)
+    .then(x => x.text())
+    .then(y => document.getElementById("demo").innerHTML =
+            y;
+    );
+}
+
+
+
