@@ -1,6 +1,8 @@
 import icons from "../img/icons.svg";
 import * as model from "./model.js";
 import recipeView from "./views/RecipeViews";
+import searchViews from "./views/searchViews";
+import ResultView from "./views/ResultView";
 
 const recipeContainer = document.querySelector('.recipe');
 
@@ -8,10 +10,13 @@ const recipeContainer = document.querySelector('.recipe');
 
 ///////////////////////////////////////
 
+
 async function controlRecipe () {
   try {
+    
     const id = window.location.hash.slice(1);
     console.log(id);
+
     if(id.length === 0) {
       return;
     }
@@ -25,19 +30,31 @@ async function controlRecipe () {
   }
   
   catch (error){
-    alert(error);
+    recipeView.renderError();
   }
   
 }
 
-const eventos = [
-  "hashchange",
-  "load"
-];
+const controlSearchResults = async function () {
+  try {
+    ResultView.renderSpinner();
+    query = searchViews.getQuery();
+    if(query === '') {
+      return;
+    }
+    await model.loadSearchResults(query);
+    console.log(model.state.search.results);
+    ResultView.render(model.state.search.results);
+    
+  }
+  catch (error) {
+    console.log(error);
+  }
+}
 
-const d = window;
-eventos.forEach((ev) => {
-  d.addEventListener(ev,(e) =>{
-    controlRecipe();
-  });
-});
+function init () {
+  recipeView.addHandlerRender(controlRecipe);
+  searchViews.addHandlerSearch(controlSearchResults);
+}
+
+init();

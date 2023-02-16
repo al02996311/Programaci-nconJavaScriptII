@@ -9,7 +9,7 @@ const timeout = function (s) {
 };
 
   
-export const getJSON = async (url) => {
+export const getJSON = async function (url) {
     try {
         const fetchPro = fetch(url);
         
