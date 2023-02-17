@@ -10,9 +10,9 @@
   "author": "Barbara Flores <al02996311@tecmilenio.mx>",
   "license": "ISC",
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.8.3",
+    "@parcel/transformer-sass": "latest",
     "netlify-cli": "^12.12.1",
-    "parcel": "^2.8.3"
+    "parcel": "latest"
   },
   "dependencies": {
     "@parcel/transformer-sass": "latest",
