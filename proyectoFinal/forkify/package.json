@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@parcel/transformer-sass": "latest",
+    "cssnano": "^4.1.11",
     "fractional": "^1.0.0"
   }
 }
